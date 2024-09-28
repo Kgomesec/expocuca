@@ -1,55 +1,43 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Image, StyleSheet, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
+import AS_images from '@react-native-async-storage/async-storage';
 
-const MyComponent: React.FC = () => {
-  const [imageUri, setImageUri] = useState<string | null>(null); 
+const DisplayImages: React.FC = () => {
+  const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
-    const fetchImage = async () => {
-      try {
-        const storedImage = await AsyncStorage.getItem('imageUri');
-        if (storedImage !== null) {
-          setImageUri(storedImage);
+    const fetchImages = async () => {
+      const imageList: string[] = [];
+
+      for (let i = 1; i <= 6; i++) {
+        const image = await AS_images.getItem(`image${i}`);
+        if (image !== null) {
+          imageList.push(image);
         }
-      } catch (error) {
-        console.error('Erro ao recuperar a imagem', error);
       }
+
+      setImages(imageList);
     };
 
-    fetchImage();
+    fetchImages();
   }, []);
 
   return (
-    <View style={styles.container}>
-      {imageUri ? (
-        <Image
-          source={{ uri: imageUri }}
-          style={styles.image}
-        />
+    <div style={{ textAlign: 'center', marginTop: '20px' }}>
+      <h1>Todas as Imagens Armazenadas</h1>
+      {images.length > 0 ? (
+        images.map((src, index) => (
+          <img 
+            key={index} 
+            src={src} 
+            alt={`Imagem ${index + 1}`} 
+            style={{ maxWidth: '30%', margin: '10px' }} 
+          />
+        ))
       ) : (
-        <View style={styles.placeholder}>
-        </View>
+        <p>Nenhuma imagem armazenada.</p>
       )}
-    </View>
+    </div>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  image: {
-    width: 100,
-    height: 100,
-  },
-  placeholder: {
-    width: 100,
-    height: 100,
-    backgroundColor: '#ccc',
-  },
-});
-
-export default MyComponent;
+export default DisplayImages;

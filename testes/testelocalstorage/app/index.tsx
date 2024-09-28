@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text, View, Image } from "react-native";
 import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AS_linguagens from '@react-native-async-storage/async-storage'; //podemos adicionar varios localstorages para organização
