@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-image: url("../images/backgroundestrelas.jpg");
+    background-size: 250px;
+    width: 100dvw; 
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center_content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logonerds {
+    width: 200px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+label {
+    margin: 0 0 0 10px;
+}
+
+input {
+    height: 35px;
+    padding: 0 10px 0 10px;
+    border-radius: 1rem;
+}
+
+.submit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-bottom: 100px;
+    margin-top: 10px;
+}
+
+.submit .button {
+    height: 50px;
+    border-radius: 1rem;
+    font-weight: 600;
+    background-color: #01FF01;
+    color: black;
+    outline: 0;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+.logoCA {
+    width: 50px;
+}

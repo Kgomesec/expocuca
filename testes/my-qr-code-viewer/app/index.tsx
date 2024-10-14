@@ -94,14 +94,14 @@ const ImageViewer: React.FC = () => {
   //   checarImagemIgual();
   // }, [location]);
 
-  // useEffect(() => {
-  //   // Redirecionar após carregar a página
-  //   const timeoutId = setTimeout(() => {
-  //     window.location.href = 'http://192.168.0.59:8081/homePage'; 
-  //   }, 3000); 
+  useEffect(() => {
+    // Redirecionar após carregar a página
+    const timeoutId = setTimeout(() => {
+      window.location.href = 'http://192.168.0.102:8081/homePage'; 
+    }, 3000); 
 
-  //   return () => clearTimeout(timeoutId); 
-  // }, []);
+    return () => clearTimeout(timeoutId); 
+  }, []);
   buscar("image1");
   return ( 
     
